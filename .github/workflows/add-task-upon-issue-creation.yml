@@ -30,8 +30,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            await oktopit.projects.createCard({
+            await oktopit.rest.projects.createCard({
             column_id: NEW,
+            note: context.payload.issue.description,
             content_id: context.payload.issue.id,
             content_type: "Issue"
             });
