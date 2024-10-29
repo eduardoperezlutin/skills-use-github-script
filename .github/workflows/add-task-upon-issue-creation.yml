@@ -8,6 +8,7 @@ jobs:
     permissions:
       issues: write
       contents: read
+      repository-projects: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -31,7 +32,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             await github.rest.projects.createCard({
-            column_id: "NEW",
+            column_id: "1",
             note: context.payload.issue.description,
             content_id: context.payload.issue.id,
             content_type: "Issue"
